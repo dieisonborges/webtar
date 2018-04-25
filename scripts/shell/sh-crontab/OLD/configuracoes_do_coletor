@@ -1,0 +1,9 @@
+#Configuracoes estaticas do coletor
+ip_coletor="10.112.24.45"
+nome_arquivo="IP-$ip_coletor-HOST-`hostname`-`date +%d%m%y-%H%M%S`.txt"
+pid=`pidof cat`
+dir_bkp="ligacoes"
+dir_padrao="ligacoes_para_enviar"
+dir_gravando="gravando"
+grupo="administrador:administrador"
+interface="ttyS0"

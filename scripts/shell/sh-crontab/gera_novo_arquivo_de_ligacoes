@@ -1,0 +1,51 @@
+#!/bin/bash
+#Script que gera os arquivos de Bilhetes do WEBTAR
+
+
+echo "WEBTAR Script 2.0 by GTWebtar"
+
+if [ ! -d /srv/webtar ]; then
+	echo "A pasta /srv/webtar nao existe"
+	exit
+fi
+	echo "Iniciando a execucao ..."
+	cd /srv/webtar/
+
+	#Pega as configuracoes do coletor
+	source sh-crontab/configuracoes_do_coletor
+
+	#Gera o nome do arquivo	
+	nome_arquivo="IP-$ip_coletor-HOST-`hostname`-`date +%d%m%y-%H%M%S`.txt"
+
+	#Pega o Número do processo CAT (lê o conteudo de um arquivo ou porta)
+	pid=`pidof cat`
+
+	#Diretorios de armazenamento	
+	dir_bkp="ligacoes"
+	dir_padrao="ligacoes_para_enviar"
+	dir_gravando="gravando"
+
+	#Copia o arquivo ligacoes e gera um BACK UP	
+	mv $dir_gravando/ligacoes.txt $dir_bkp/$nome_arquivo
+
+	echo "Efetuando o back-up do arquivo $nome_arquivo"
+	cp $dir_bkp/$nome_arquivo $dir_padrao/$nome_arquivo
+	echo ""
+
+	echo "Mudando as permissões para $nome_arquivo pasta $dir_padrao"
+	chown $grupo $dir_bkp/$nome_arquivo
+	chmod 775 $dir_bkp/$nome_arquivo
+	echo "Mudando as permissões para $nome_arquivo pasta $dir_bkp"
+	chown $grupo $dir_padrao/$nome_arquivo
+	chmod 775 $dir_padrao/$nome_arquivo
+	echo ""
+
+	#A mágica do WEBTAR. É aqui que ele lê a porta serial e armazena no arquivo ligacoes.txt
+	echo "Iniciando gravacao no arquivo ligacoes.txt"
+	cat /dev/$interface >> $dir_gravando/ligacoes.txt &
+	echo ""
+
+	#Mata o processo anterior
+	echo "Matando os Gatos (cat)"
+	kill $pid
+	echo "Concluido!"

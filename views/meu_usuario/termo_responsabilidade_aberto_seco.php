@@ -1,0 +1,19 @@
+<?php
+  	session_start();
+	
+	require('../../funcoes/funcoes.php');
+  	require('../../configuracoes/conexao.php');
+  	require('../../dal/dalusuario.php');
+	
+	$unidades = GetVarSESSION('termo_resposabilidade_unidade_temp');
+	
+	$conexao = new Conexao();
+    $dalusuario = new Dalusuario($conexao);
+	
+	$id = GetVarSESSION('termo_resposabilidade_id_temp');
+
+	
+	$rs_usuario =  $dalusuario->getPorId($id, $unidades);
+    $usuario = mysql_fetch_object($rs_usuario);
+?>
+<?php require('../layouts/termo_resposabilidade.php');?>

@@ -1,0 +1,7 @@
+#Configuracoes estaticas do coletor
+#senha que será setada
+password="tarifador"
+#usuario que será setado
+user="administrador"
+#servidor para baixar os scripts que geram as ligacoes
+servidor="https://10.112.30.30/webtar"

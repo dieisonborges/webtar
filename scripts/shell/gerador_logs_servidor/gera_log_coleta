@@ -1,0 +1,13 @@
+#!/bin/bash
+#Adicione esta linha no CRONTAB
+#$ crontab -e
+#00 * * * * /var/www/dt/webtar/scripts/shell/gerador_logs_servidor/gerador_logs_servidor
+
+dir="/var/www/webtar/docs"
+
+echo "WEBTAR Script - Gerador de Logs de Coleta do servidor"
+
+mv $dir/log.html $dir/log-`date +%d%m%y-%H%M%S`.html
+
+echo "o LOG foi de coleta de dados foi armazenado"
+echo "Concluido!"

@@ -1,0 +1,178 @@
+div#menu .menu {
+	height: 47px;
+	width: 956px;
+	background-image:url('../images/menu.png');
+	background-repeat: repeat-x;
+}
+*> div#menu .menu {
+	margin-top: -11px;
+}
+
+div#menu .menu ul {
+	padding: 0;
+	list-style: none;
+	line-height: normal;
+	margin-left: -7px;
+}
+*> div#menu .menu ul {
+	margin-left:0;
+}
+div#menu .menu li {
+	display: inline;
+}
+div#menu li span.left {
+	background-image:url(../images/menu-left.gif);
+	background-repeat:no-repeat;
+	width: 5px;
+	height: 64px;
+	overflow: visible;
+	position: relative;
+	bottom:15px;
+	vertical-align: bottom;
+	visibility:visible;
+	display:block;
+	padding-top: 15px;
+	margin-bottom: -32px;
+	float:left;
+}
+div#menu li span.hlavny {
+	background-image:url(../images/menu-central.gif);
+	background-repeat:repeat-x;
+	height: 64px;
+	overflow: visible;
+	position: relative;
+	bottom:15px;
+	vertical-align: bottom;
+	visibility:visible;
+	display:block;
+	float:right;
+	padding-top: 15px;
+	margin-bottom: -32px;
+	text-align: center;
+	text-decoration: none;
+	padding-left:40px;
+	padding-right:40px;
+}
+div#menu li span.hlavny a, div#menu li span.hlavny a:visited, div#menu li span.hlavny a:link {
+	color:#000;
+}
+div#menu li span.hlavny_ {
+	height: 64px;
+	overflow: visible;
+	position: relative;
+	bottom:15px;
+	vertical-align: bottom;
+	visibility:visible;
+	display:block;
+	float:right;
+	padding-top: 15px;
+	margin-bottom: -32px;
+	text-align: center;
+	text-decoration: none;
+	padding-left:10px;
+	padding-right:10px;
+	text-transform:uppercase;
+	font-size:13px;
+}
+
+
+.item_login_menu{
+	height: 64px;
+	overflow: visible;
+	position: relative;
+	bottom:15px;
+	vertical-align: bottom;
+	visibility:visible;
+	display:block;
+	float:left;
+	margin-top:30px;
+	margin-bottom:-62px;
+	margin-left:20px;
+	text-align:left;
+	text-decoration: none;
+	font-size:13px;
+}
+
+div#menu li span.right {
+	background-image:url(../images/menu-right.gif);
+	background-repeat:no-repeat;
+	width: 6px;
+	height:64px;
+	overflow: visible;
+	position: relative;
+	bottom:15px;
+	vertical-align: bottom;
+	visibility:visible;
+	display:block;
+	padding-top: 15px;
+	margin-bottom: -32px;
+	float: left;
+}
+div#menu .menu a, div#menu .menu a:visited, div#menu .menu a:active {
+	color:#000;
+	display:block;
+	float: left;
+	padding: 16px 0 0 0;
+	margin:0;
+	text-align: center;
+	text-decoration: none;
+}
+div#menu .menu img {
+	display:block;
+	float:right;
+	margin: 0px;
+	margin-bottom: -16px;
+	padding: 12px 0 0 0;
+	text-align: center;
+	text-decoration: none;
+}
+div#menu .menu a:hover {
+	color:#000;
+	text-decoration:underline;
+}
+
+
+/* categories */
+
+ul.categories {
+	width:200px;
+	position: relative;
+	margin: 0px;
+	padding: 0px;
+	list-style: none;
+	font-size: 11px;
+}
+ul.categories li {
+	display: block;
+	padding: 0px;
+	line-height: 30px;
+	border-bottom: 1px #e3f4b7 solid;
+	border-top: 1px solid #f9faf7;
+	height: 30px;
+	margin-top: -2px;
+	margin-bottom: -2px;
+	margin-left:-15px;
+}
+*> ul.categories li {
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+ul.categories li.selected {
+	text-decoration: none;
+	background-color:#e3f4b7;
+}
+ul.categories li a {
+	display: block;
+	overflow: hidden;
+	padding: 0px 0px 0px 40px;
+	line-height: 30px;
+	text-decoration: none;
+	font-size: 11px;
+	color:#000000;
+	background: url(../images/arrow.gif) 26px 12px no-repeat;
+}
+ul.categories li a:hover {
+	text-decoration: underline;
+	background-color:#e3f4b7;
+}
+

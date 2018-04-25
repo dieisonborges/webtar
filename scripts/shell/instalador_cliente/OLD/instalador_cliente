@@ -1,0 +1,60 @@
+#!/bin/bash
+
+echo "WEBTAR Script de Instalacao 1.0 by Dieison S. Borges" \n
+echo "Inicializando o instalador" \n
+
+# Tratamento de erros
+function error() {
+	case "$1" in
+		*)
+			echo "Ocorreu um erro inesperado."
+			exit 1
+			;;
+	esac
+}
+
+if [ `whoami` != root ]; then
+	echo "Você precisa ser root."
+	exit 1
+fi
+
+#Criando o Usuário e Setando a Senha
+source config_instalador_cliente
+pass=$(perl -e 'print crypt($ARGV[0], "password")' $password)
+useradd -p $pass $user
+
+cd /home/
+mkdir tarifador/
+
+#Criando a Estrutura de Pastas
+cd /home/tarifador/
+mkdir gravando
+mkdir ligacoes
+mkdir ligacoes_para_enviar
+mkdir sh-crontab
+
+cd /home/
+
+chown tarifador tarifador/ -R
+chmod 775 -R tarifador/
+
+cd /home/tarifador/sh-crontab/
+
+#Inserindo o CRON que gera as ligacoes telefonicas
+echo '00 * * * * /home/tarifador/sh-crontab/gera_novo_arquivo_de_ligacoes' | crontab -
+
+#Copiando os arquivos de configuracao
+
+wget --no-check-certificate "$servidor/scripts/shell/sh-crontab/configuracoes_do_coletor"
+wget --no-check-certificate "$servidor/scripts/shell/sh-crontab/gera_novo_arquivo_de_ligacoes"
+
+#Gerando COLETA para reinicialização do sistema
+#/etc/rc.local
+echo "Inserindo Inicializador do aplicatino no RC.LOCAL"
+ln gera_novo_arquivo_de_ligacoes gera_novo_arquivo_de_ligacoes_temp
+mv gera_novo_arquivo_de_ligacoes_temp /etc/init.d/gera_novo_arquivo_de_ligacoes
+chmod 755 /etc/init.d/gera_novo_arquivo_de_ligacoes
+update-rc.d gera_novo_arquivo_de_ligacoes defaults
+
+echo "Instalação realizada com sucesso!"
+echo "Reinicie o Sistema Operacional"

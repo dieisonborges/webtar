@@ -1,0 +1,189 @@
+div#menu .menu {
+	height: 36px;
+	width: 956px;
+	background-image:url('../../public/images/menu.png');
+	background-repeat: repeat-x;
+	padding-top:10px;
+}
+
+
+/* categories */
+
+ul.categories {
+	width:200px;
+	position: relative;
+	margin: 0px;
+	padding: 0px;
+	list-style: none;
+	font-size: 11px;
+}
+ul.categories li {
+	display: block;
+	padding: 0px;
+	line-height: 30px;
+	border-bottom: 1px #e3f4b7 solid;
+	border-top: 1px solid #f9faf7;
+	height: 30px;
+	margin-top: -2px;
+	margin-bottom: -2px;
+	margin-left:-15px;
+}
+*> ul.categories li {
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+ul.categories li.selected {
+	text-decoration: none;
+	background-color:#e3f4b7;
+}
+ul.categories li a {
+	display: block;
+	overflow: hidden;
+	padding: 0px 0px 0px 40px;
+	line-height: 30px;
+	text-decoration: none;
+	font-size: 11px;
+	color:#000000;
+	background: url(../images/arrow.gif) 26px 12px no-repeat;
+}
+ul.categories li a:hover {
+	text-decoration: underline;
+	background-color:#e3f4b7;
+}
+
+/* ----------------------------------FIM APROVEITAMENTO---------------------------------------------- */
+
+
+/*!!!!!!!!!!! MyCSSMenu Core CSS [Do Not Modify!] !!!!!!!!!!!!!*/
+.qmmc .qmdivider{display:block;font-size:1px;border-width:0px;border-style:solid;position:relative;}.qmmc .qmdividery{float:left;width:0px;}.qmmc .qmtitle{display:block;cursor:pointer;white-space:nowrap;position:relative;}.qmclear {font-size:1px;height:0px;width:0px;clear:left;line-height:0px;display:block;float:none !important;}.qmmc {position:relative;z-index:10;}.qmmc a, .qmmc li {float:left;display:block;white-space:nowrap;position:relative;}.qmmc div a, .qmmc ul a, .qmmc ul li {float:none;}.qmsh div a {float:left;}.qmmc div{visibility:hidden;position:absolute;}
+
+
+/*!!!!!!!!!!! MyCSSMenu Styles [Please Modify!] !!!!!!!!!!!*/
+
+
+	/* MyCSSMenu 0 */
+
+	/*"""""""" (MAIN) Items""""""""*/	
+	#qm0 a	
+	{	
+		padding:5px 4px 5px 5px;
+		color:#555555;
+		font-family:Arial;
+		font-size:13px;
+		text-decoration:none;
+	}
+
+
+	/*"""""""" (SUB) Container""""""""*/	
+	#qm0 div	
+	{	
+		padding:10px 10px 10px 10px;;
+		margin:-2px 0px 0px;
+		background-color:transparent;
+		border-style:none;
+	}
+
+
+	/*"""""""" (SUB) Items""""""""*/	
+	#qm0 div a	
+	{	
+		padding:15px 10px 3px 5px;
+		font-size:11px;
+		border-width:0px;
+		border-style:none;
+	}
+
+
+	/*"""""""" (SUB) Hover State""""""""*/	
+	#qm0 div a:hover	
+	{	
+		color:#CC0000;
+	}
+
+
+	/*"""""""" (SUB) Active State""""""""*/	
+	body #qm0 div .qmactive, body #qm0 div .qmactive:hover	
+	{	
+		color:#CC0000;
+	}
+
+
+	/*"""""""" Individual Titles""""""""*/	
+	#qm0 .qmtitle	
+	{	
+		cursor:pointer;
+		padding:4px 0px 3px 4px;
+		color:#444444;
+		font-family:arial;
+		font-size:11px;
+		font-weight:bold;
+	}
+
+
+	/*"""""""" Individual Horizontal Dividers""""""""*/	
+	#qm0 .qmdividerx	
+	{	
+		border-top-width:1px;
+		margin:4px 0px auto auto;
+		border-color:#BFBFBF;
+	}
+
+
+	/*"""""""" Individual Vertical Dividers""""""""*/	
+	#qm0 .qmdividery	
+	{	
+		border-left-width:1px;
+		height:16px;
+		margin:5px 4px 0px 4px;
+		border-color:#AAAAAA;
+	}
+
+
+	/*"""""""" Box Animation Styles""""""""*/	
+	#qm0 .qmbox	
+	{	
+		border-width:1px;
+		border-style:solid;
+		border-color:#999999;
+	}
+
+
+	/*"""""""" (main) Rounded Items""""""""*/	
+	#qm0 .qmritem span	
+	{	
+		border-color:#DADADA;
+		background-color:#F7F7F7;
+	}
+
+
+	/*"""""""" (main) Rounded Items Content""""""""*/	
+	#qm0 .qmritemcontent	
+	{	
+		padding:0px 0px 0px 4px;
+	}
+
+
+	/*"""""""" Main Hover Fill Items [Static]""""""""*/	
+	#qm0 .qmhoverfill	
+	{	
+		background-color:#91ED99;
+	}
+
+
+	/*"""""""" Sub Hover Fill Items [Static]""""""""*/	
+	#qm0 div .qmhoverfill	
+	{	
+		background-color:#91E599;
+		border-width:1px;
+		border-style:solid;
+		border-color:#555555;
+	}
+	.qmfv
+	{
+		visibility:visible !important;
+	}.qmfh
+	{
+		visibility:hidden !important;
+	}
+
+

@@ -1,0 +1,35 @@
+body {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+}
+
+
+form {
+	border: 1px solid blue;
+	background-color: #E0E8EF;
+	padding: 10px;
+	margin: 10px;
+}
+
+input, label {
+	display: block;
+}
+
+#mensagem {
+	padding: 10px;
+	width: 200px;
+	background-color: green;
+	color: white;
+	font-weight: bold;
+}
+
+label.error {
+	border: 1px solid red;
+	color: red;
+	font-weight: bold;
+	padding: 3px;
+	background-color: #99CCFF;
+	margin: 6px 0;
+	width: 120px;
+	text-align: center;
+}

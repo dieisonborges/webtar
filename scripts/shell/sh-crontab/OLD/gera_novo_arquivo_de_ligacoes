@@ -1,0 +1,42 @@
+#!/bin/bash
+#Adicione esta linha no CRONTAB
+#$ crontab -e
+#00 * * * * /home/tarifador/script-cron/gera_novo_arquivo_de_ligacoes
+#Adicione esta linha ao rc.local
+#$ nano nano /etc/rc.local
+#/home/tarifador/sh-crontab/gera_novo_arquivo_de_ligacoes
+
+echo "WEBTAR Script 1.0 by Dieison :)"
+echo "Olá! Se voce está lendo isso, voce é muito nerd!! Hehe"
+
+if [ ! -d /home/tarifador ]; then
+	echo "A pasta /home/tarifador nao existe"
+	exit
+fi
+	echo "Iniciando a execucao ..."
+	cd /home/tarifador/
+
+	#Pega as configuracoes do coletor
+	source sh-crontab/configuracoes_do_coletor
+
+	mv $dir_gravando/ligacoes.txt $dir_bkp/$nome_arquivo
+
+	echo "Efetuando o back-up do arquivo $nome_arquivo"
+	cp $dir_bkp/$nome_arquivo $dir_padrao/$nome_arquivo
+	echo ""
+
+	echo "Mudando as permissões para $nome_arquivo pasta $dir_padrao"
+	chown $grupo $dir_bkp/$nome_arquivo
+	chmod 755 $dir_bkp/$nome_arquivo
+	echo "Mudando as permissões para $nome_arquivo pasta $dir_bkp"
+	chown $grupo $dir_padrao/$nome_arquivo
+	chmod 755 $dir_padrao/$nome_arquivo
+	echo ""
+
+	echo "Iniciando gravacao no arquivo ligacoes.txt"
+	cat /dev/$interface >> $dir_gravando/ligacoes.txt &
+	echo ""
+
+	echo "Matando os Gatos (cat)"
+	kill $pid
+	echo "Concluido!"

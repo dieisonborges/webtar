@@ -1,0 +1,7 @@
+#Configuracoes estaticas do coletor
+#Coloque o I.P. da máquina
+ip_coletor="10.112.24.45"
+#Coloque o mesmo usuário que foi cadastrado na instalação
+grupo="administrador:administrador"
+#Coloque a porta Serial
+interface="ttyUSB0"

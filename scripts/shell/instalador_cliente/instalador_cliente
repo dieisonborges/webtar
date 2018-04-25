@@ -1,0 +1,96 @@
+#!/bin/bash
+
+echo "WEBTAR Script de Instalacao 2.0 by GTWebtar" \n
+echo "Este script irá instalar o Coletor do WEBTAR" \n
+
+# Tratamento de erros
+function error() {
+	case "$1" in
+		*)
+			echo "Ocorreu um erro inesperado."
+			exit 1
+			;;
+	esac
+}
+
+
+#Verifica se o susuário é root
+if [ `whoami` != root ]; then
+	echo "Você precisa ser root."
+	exit 1
+fi
+
+
+#Listando as variaveis
+servidor="https://10.112.30.30/webtar"
+
+echo "Digite o usuário do computador"
+#Esperar o usuário digitar o nome de usuário
+read user
+
+echo "Digite a senha do computador"
+#Esperar o usuário digitar a senha
+read -s password
+
+#Abrir a pasta /srv
+cd /srv/
+
+
+echo "Criando estrutura de pastas do WEBTAR em /srv/"
+#Criar o diretorio webtar
+mkdir webtar/
+
+#Abre a pasta webtar
+cd /srv/webtar/
+
+#Criar a pasta gravando - É onde o WEBTAR vai gravar os bilhetes direto da porta serial
+mkdir gravando
+
+#Criar a pasta ligacoes - É uma pasta onde ficarã0o armazenados o back up das ligacoes 
+mkdir ligacoes
+
+#Criar a pasta ligacoes_para_enviar
+# É uma pasta onde ficarão on bilhetes que ainda não foram processados pelo servidor do WEBTAR
+mkdir ligacoes_para_enviar
+
+#Criar a pasta sh-crontab - nesta pasta ficarão armazenados os SCRIPTs de coleta de dados
+mkdir sh-crontab
+
+#Abre a pasta /srv
+cd /srv/
+
+
+echo "Setando as permissões para a pasta"
+#Colocar o usuário $user como dono do 
+chown $user: webtar/ -R
+
+#Setar as permissoes:
+# 7 - O Dono pode executar, listar e modificar
+# 7 - O Grupo pode executar, listar e modificar
+# 5 - Todos os outros poderão executar e listar
+chmod 775 -R webtar/
+
+
+#Abrir a pasta /srv/webtar/sh-crontab
+cd /srv/webtar/sh-crontab/
+
+#O crontab é um agendador de tarefas do Linux
+#Inserindo o CRON que gera as ligacoes telefonicas
+echo '00 * * * * bash /srv/webtar/sh-crontab/gera_novo_arquivo_de_ligacoes' | crontab -
+
+#Copiando os arquivos de configuracao
+
+#Faz Download do Script que gera os arquivos de ligacoes
+echo "Efetuando o download do arquivo de configuração"
+wget --no-check-certificate "$servidor/scripts/shell/sh-crontab/configuracoes_do_coletor"
+wget --no-check-certificate "$servidor/scripts/shell/sh-crontab/gera_novo_arquivo_de_ligacoes"
+
+#Gerando COLETA para reinicialização do sistema
+#/etc/rc.local
+echo "Inserindo Inicializador do aplicatino no RC.LOCAL"
+ln gera_novo_arquivo_de_ligacoes gera_novo_arquivo_de_ligacoes_temp
+mv gera_novo_arquivo_de_ligacoes_temp /etc/init.d/gera_novo_arquivo_de_ligacoes
+chmod 755 /etc/init.d/gera_novo_arquivo_de_ligacoes
+update-rc.d gera_novo_arquivo_de_ligacoes defaults
+
+echo "Instalação realizada com sucesso!"
